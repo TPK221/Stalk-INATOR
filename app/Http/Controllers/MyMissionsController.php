@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Missions;
-use App\Models\Reservations;
 use App\Models\StudentProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Submissions;
+use App\Models\Reservations;
 
 class MyMissionsController extends Controller
 {
