@@ -28,7 +28,7 @@ class Reservations extends Model
         return $this->belongsTo(studentProfile::class, 'user_id');
     }
 
-    public function missions()
+    public function mission()
     {
         return $this->belongsTo(Missions::class, 'mission_id');
     }
@@ -38,7 +38,7 @@ class Reservations extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function submissions()
+    public function submission()
     {
         return $this->hasOne(Submissions::class, 'mission_id');
     }
