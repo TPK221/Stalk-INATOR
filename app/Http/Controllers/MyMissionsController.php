@@ -2,59 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Missions;
-use App\Models\StudentProfile;
+use App\Models\Reservations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 use App\Models\Submissions;
-use App\Models\Reservations;
 
 class MyMissionsController extends Controller
 {
     public function index()
     {
-        $reservations = Reservations::where('user_id', auth()->user()->id)
+        $user = Auth::user();
+
+        $reservations = $user->Reservations()
             ->where('status', '!=', 'completed')
-            ->with(['mission', 'studentProfile'])
+            ->with(['mission', 'submission'])
             ->get();
-    
-        $points = [];
-        $feedback = [];
-    
-        foreach ($reservations as $reservation) {
-            $submission = Submissions::where('mission_id', $reservation->mission_id)->first();
-            $reservation->submission = $submission;
-            $points[$reservation->id] = $reservation->points;
-            $feedback[$reservation->id] = $reservation->feedback;
-        }
-    
-        return view('student.mymissions', [
-            'reservations' => $reservations,
-            'points' => $points,
-            'feedback' => $feedback,
-        ]);
+
+        return view('student.mymissions', compact('reservations'));
     }
 
     public function submitFindings(Request $request, Reservations $reservation)
     {
         $user = Auth::user();
 
-        // check if user is authorized to submit findings for this reservation
+        // Check if the authenticated user is authorized to submit findings for this reservation
         if ($user->id !== $reservation->user_id) {
             return redirect()->back()->with('error', 'Unauthorized access');
         }
 
-        // check if the submission exists for this reservation
-        $submission = Submissions::where('reservation_id', $reservation->id)->first();
+        // Check if the submission exists for this reservation
+        $submission = $reservation->submission;
         if (!$submission) {
             return redirect()->back()->with('error', 'Submission not found');
         }
 
-        // update the status of the submission to "submitted"
+        // Update the status of the submission to "submitted"
         $submission->status = 'submitted';
         $submission->save();
-
 
         return redirect()->back()->with('success', 'Findings submitted successfully');
     }
