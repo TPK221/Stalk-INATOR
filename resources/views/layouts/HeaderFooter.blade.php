@@ -116,7 +116,7 @@
                                 <a class="nav-item nav-link" href="{{ route('homepage') }}">Home <span class="sr-only">(current)</span></a>
                                 <a class="nav-item nav-link" href="{{ route('missions') }}">Missions</a>
                                 <a class="nav-item nav-link" href="{{ route('leaderboard') }}">Leaderboard</a>
-                                <a class="nav-item nav-link" href="{{ route('student.myMissions') }}">My Missions</a>
+                                <a class="nav-item nav-link" href="{{ route('student.mymissions') }}">My Missions</a>
                                 <a class="nav-item nav-link" href="{{ route('student.socialengineeringinsights') }}">Social Engineering Insights</a>
                                 <a class="nav-item nav-link" href="{{ route('rewards') }}">Rewards</a>
                                 @elseif(Auth::user()->hasRole('lecturer'))
