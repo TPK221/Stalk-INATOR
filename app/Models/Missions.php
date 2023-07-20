@@ -17,7 +17,7 @@ class Missions extends Model
 
     public function lecturerProfile()
     {
-        return $this->belongsTo(LecturerProfile::class, 'lecturer_profile_id');
+        return $this->belongsTo(lecturerProfile::class, 'lecturer_profile_id');
     }
 
     public function studentProfile()
@@ -32,7 +32,7 @@ class Missions extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservations::class, 'mission_id');
+        return $this->hasMany(reservations::class, 'mission_id');
     }
 
 

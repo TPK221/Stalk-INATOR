@@ -20,12 +20,12 @@ class Reservations extends Model
 
     public function lecturerProfile()
     {
-        return $this->belongsTo(LecturerProfile::class);
+        return $this->belongsTo(lecturerProfile::class);
     }
 
     public function studentProfile()
     {
-        return $this->belongsTo(StudentProfile::class, 'user_id');
+        return $this->belongsTo(studentProfile::class, 'user_id');
     }
 
     public function mission()
