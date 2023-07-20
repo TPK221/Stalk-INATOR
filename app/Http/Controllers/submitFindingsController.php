@@ -35,7 +35,10 @@ class SubmitFindingsController extends Controller
         $studentProfile = studentProfile::where('user_id', $user->id)->firstOrFail();
     
         // Retrieve the reservation based on the reservation ID
-        $reservation = Reservations::findOrFail($reservationId);
+        // $reservation = Reservations::findOrFail($reservationId);
+        $reservation = Reservations::where('id', $reservationId)
+        ->where('user_id', $user->id)
+        ->firstOrFail();
     
         $missionId = $reservation->mission_id;
         
