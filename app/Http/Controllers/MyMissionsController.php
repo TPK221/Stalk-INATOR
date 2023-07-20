@@ -35,7 +35,6 @@ class MyMissionsController extends Controller
             'feedback' => $feedback,
         ]);
     }
-    
 
     public function submitFindings(Request $request, Reservations $reservation)
     {
