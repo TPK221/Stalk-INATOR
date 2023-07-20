@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth', 'role:student']], function() {
     //Route::post('/missions/submitFindings/{mission_id}', [MissionController::class, 'submitFindings'])->name('student.submitFindings');
     Route::get('/student/submitFindings/{id}', [submitFindingsController::class, 'index'])->name('student.submitFindings');
     Route::post('/student/storeFindings/{reservationId}', [SubmitFindingsController::class, 'storeSubmission'])->name('student.storeFindings');
-    Route::get('/student/myMissions',[MyMissionsController::class, 'index'])->name('student.mymissions');
+    Route::get('/student/myMissions',[MyMissionsController::class, 'index'])->name('student.myMissions');
     Route::get('/student/submitFindings/{reservation}', [MyMissionsController::class, 'submitFindings'])->name('student.submitFindings');
     Route::get('/student/socialengineeringinsights',[SocialEngineeringInsightsController::class, 'index'])->name('student.socialengineeringinsights');
     
