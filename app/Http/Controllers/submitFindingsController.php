@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model;
 use App\Models\User;
 use App\Models\Missions;
 use App\Models\Submissions;
