@@ -48,16 +48,16 @@ class SubmissionController extends Controller
 
         $studentProfile = studentProfile::where('fullName', $studentName)->firstOrFail();
 
-        $reservation = Reservations::where('user_id', $studentProfile->user_id)
+        $reservations = Reservations::where('user_id', $studentProfile->user_id)
             ->where('mission_id', $missionId)
             ->firstOrFail();
 
-        $currentPoints = $reservation->points ?? 0;
+        $currentPoints = $reservations->points ?? 0;
         $newPoints = $currentPoints + $points;
 
-        $reservation->points = $newPoints;
-        $reservation->feedback = $feedback;
-        $reservation->save();
+        $reservations->points = $newPoints;
+        $reservations->feedback = $feedback;
+        $reservations->save();
 
         return redirect()->route('leaderboard')->with('success', 'Points and feedback assigned successfully.');
     }
