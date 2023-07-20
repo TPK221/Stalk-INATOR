@@ -35,7 +35,7 @@ class studentProfile extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservations::class, 'user_id');
+        return $this->hasMany(reservations::class, 'user_id');
     }
     
 }

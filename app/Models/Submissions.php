@@ -28,7 +28,7 @@ class Submissions extends Model
 
     public function reservation()
     {
-        return $this->belongsTo(Reservations::class, 'mission_id');
+        return $this->belongsTo(reservations::class, 'mission_id');
     }
 }
 
