@@ -25,7 +25,7 @@ class Missions extends Model
         return $this->belongsToMany(studentProfile::class);
     }
 
-    public function Submissions()
+    public function submissions()
     {
         return $this->hasMany(Submissions::class, 'mission_id', 'id');
     }

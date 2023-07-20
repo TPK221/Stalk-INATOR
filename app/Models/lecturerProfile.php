@@ -17,7 +17,7 @@ class lecturerProfile extends Model
         'image'
     ];
 
-    public function Users()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
