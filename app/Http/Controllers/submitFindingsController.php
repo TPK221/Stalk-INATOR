@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Missions;
-use App\Models\Submissions;
 use App\Models\Reservations;
+use App\Models\Submissions;
 use Illuminate\Http\Request;
-use App\Models\studentProfile;
-use Illuminate\Support\Facades\DB;
+use App\Models\StudentProfile;
 use Illuminate\Support\Facades\Auth;
 
 class SubmitFindingsController extends Controller
 {
     public function index($id)
     {
-        $user = auth()->user();
+        $user = Auth::user();
         if (!$user) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        $student = studentProfile::where('user_id', $user->id)->first();
-        $mission = Missions::where('id', $id)->first();
+        
+        $student = StudentProfile::where('user_id', $user->id)->firstOrFail();
+        $mission = Missions::findOrFail($id);
         
         return view('student.submitfindings', compact('user', 'student', 'mission'));
     }
@@ -32,24 +31,19 @@ class SubmitFindingsController extends Controller
         ]);
     
         $user = $request->user();
-        $studentProfile = studentProfile::where('user_id', $user->id)->firstOrFail();
+        $studentProfile = StudentProfile::where('user_id', $user->id)->firstOrFail();
     
-        // Retrieve the reservation based on the reservation ID
-        $reservation = Reservations()::findOrFail($reservationId);
-    
-        $missionId = $reservation->mission_id;
-        
+        $reservation = Reservations::findOrFail($reservationId);
     
         $submissionFile = $request->file('submissionFile');
-        $submissionFileName = $submissionFile->getClientOriginalName();
-        $submissionFileToStore = time() . '_' . $submissionFileName;
+        $submissionFileName = time() . '_' . $submissionFile->getClientOriginalName();
     
-        $submissionFile->move('storage', $submissionFileToStore);
+        $submissionFile->storeAs('public', $submissionFileName);
     
         $submission = new Submissions();
         $submission->student_profile_id = $studentProfile->id;
-        $submission->mission_id = $missionId;
-        $submission->submissionFile = $submissionFileToStore;
+        $submission->mission_id = $reservation->mission_id;
+        $submission->submissionFile = $submissionFileName;
         $submission->status = 'Submitted';
         $submission->save();
     
@@ -58,6 +52,6 @@ class SubmitFindingsController extends Controller
 
     public function download(Request $request, $submissionFile)
     {
-        return response()->download(public_path('storage/' . $submissionFile));
+        return response()->download(storage_path('app/public/' . $submissionFile));
     }
 }
