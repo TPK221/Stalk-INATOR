@@ -17,12 +17,8 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->bigInteger('mission_id');
+            $table->unsignedBigInteger('mission_id')->index(); // Use 'unsignedBigInteger' to match the data type of 'id' in 'missions' table
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade');
-        });
-
-        Schema::table('reservations', function (Blueprint $table) {
             $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade');
         });
     }

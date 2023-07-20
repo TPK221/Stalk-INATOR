@@ -13,20 +13,20 @@ class CreateReservationTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservation', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->bigInteger('mission_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade');
+        // Schema::create('reservation', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        //     $table->bigInteger('user_id')->unsigned()->nullable();
+        //     $table->bigInteger('mission_id');
+        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        //     $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade');
 
             
-        });
+        // });
 
-        Schema::table('reservation', function (Blueprint $table) {
-            $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade');
-        });
+        // Schema::table('reservation', function (Blueprint $table) {
+        //     $table->foreign('mission_id')->references('id')->on('missions')->onDelete('cascade');
+        // });
     }
 
     /**
