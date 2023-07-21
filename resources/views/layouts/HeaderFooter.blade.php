@@ -146,7 +146,7 @@
                         <div class="nav-item dropdown d-none d-sm-flex ml-16pt">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 @if(Auth::user()->hasRole('student'))
-                                <img width="50" height="50" class="rounded-circle" src="/public/{{auth()->user()->studentProfile->image ?? 'default-image.jpg'}}" alt="profile pic"></img>
+                                <img width="50" height="50" class="rounded-circle" src="/storage/images/{{auth()->user()->studentProfile->image ?? 'default-image.jpg'}}" alt="profile pic"></img>
                                 @elseif(Auth::user()->hasRole('lecturer'))
                                 <img width="50" height="50" class="rounded-circle" src="/storage/images/{{auth()->user()->lecturerProfile->image ?? 'default-image.jpg'}}" alt="profile pic"></img>
                                 @endif
