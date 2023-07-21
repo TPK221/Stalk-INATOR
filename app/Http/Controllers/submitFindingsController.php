@@ -6,7 +6,7 @@ use App\Model;
 use App\Models\User;
 use App\Models\Missions;
 use App\Models\Submissions;
-use App\Models\Reservations;
+use App\Models\reservations;
 use Illuminate\Http\Request;
 use App\Models\studentProfile;
 use Illuminate\Support\Facades\DB;
