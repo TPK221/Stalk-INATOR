@@ -107,7 +107,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input id="email" type="email" name="email" class="form-control" placeholder="Your username ..." required autofocus>
+                            <input id="email" type="email" name="email" class="form-control" placeholder="Your email" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
