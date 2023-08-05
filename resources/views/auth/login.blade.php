@@ -122,7 +122,7 @@
             </div>
             <div class="js-fix-footer bg-white border-top-5 footer-h">
                 <div class="bg-footer page-section py-lg-50pt">
-					<p class="text-white-50 mb-0" style="text-align:center">&copy; 2022 Copyright: Stalk-INATOR.com</p>
+					<p class="text-white-50 mb-0" style="text-align:center">&copy; 2023 Copyright: stalkinator.com</p>
                 </div>
             </div>
         </div>
