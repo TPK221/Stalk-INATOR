@@ -11,7 +11,7 @@
     </div>
     <br><br>
     <div class= "container page__container">
-        <h2 class="flex m-0">Mission Instruction: {{ $mission->mission_instruction }}</h2>
+        <h2 class="flex m-0">Submit your findings!</h2>
         <br><br>
         
         <p>You can upload images file such as png and jpg, pdf file and word document. Max upload size: 2MB </p>
