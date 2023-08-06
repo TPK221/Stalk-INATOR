@@ -24,36 +24,18 @@
                     <div class="container pt-4">
                         @if(Auth::user()->hasRole('student'))
                             @if(isset(auth()->user()->studentProfile->fullName))
-                                <div class="row mb-3">
-                                    <div class="col-md-4 font-weight-bold">Name :</div>
-                                    <div class="col-md-8">{{ auth()->user()->studentProfile->fullName }}</div>
-                                </div>
-                            @else
-                                <div class="row mb-3">
-                                    <div class="col-md-4 font-weight-bold">Name :</div>
-                                    <div class="col-md-8">-</div>
-                                </div>
-                            @endif
+                            <span class="pl-5 font-weight-bold">Name : </span><span>{{ auth()->user()->studentProfile->fullName }}</span><br>
+                        @else
+                            <span class="pl-5 font-weight-bold">Name : </span><span>-</span><br>
+                        @endif
 
-                            <div class="row mb-3">
-                                <div class="col-md-4 font-weight-bold">Username :</div>
-                                <div class="col-md-8">{{ Auth::user()->name }}</div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-4 font-weight-bold">Email :</div>
-                                <div class="col-md-8">{{ Auth::user()->email }}</div>
-                            </div>
+                        <span class="pl-5 font-weight-bold ">Username : </span><span class="">{{ Auth::user()->name }}</span><br>
+                        <span class="pl-5 font-weight-bold ">Email : </span><span class="">{{ Auth::user()->email }}</span><br>
 
                             @if(isset(auth()->user()->studentProfile->studentID))
-                                <div class="row mb-3">
-                                    <div class="col-md-4 font-weight-bold">Student ID :</div>
-                                    <div class="col-md-8">{{ auth()->user()->studentProfile->studentID }}</div>
-                                </div>
+                            <span class="pl-5 font-weight-bold">Student ID : </span><span>{{ auth()->user()->studentProfile->studentID }}</span><br> 
                             @else
-                                <div class="row mb-3">
-                                    <div class="col-md-4 font-weight-bold">Student ID :</div>
-                                    <div class="col-md-8">-</div>
-                                </div>
+                            <span class="pl-5 font-weight-bold">Lecturer ID : </span><span>-</span><br>
                             @endif
                         @endif
                     </div>
