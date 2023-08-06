@@ -14,7 +14,7 @@
 <br><br>
 <div class="container page__container page-section border border-dark rounded shadow-lg p-5 mb-5 bg-white ">
 
-    <img class="img-view-profile" src="/storage/images/{{auth()->user()->lecturerProfile->image ?? 'default-image.jpg'}}">
+<img class="img-view-profile" src="/storage/images/{{auth()->user()->studentProfile->image ?? 'default-image.jpg'}}" alt="Profile Image">
     <div class="container pt-5 container-text-student">
         @if(Auth::user()->hasRole('student'))
 
